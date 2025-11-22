@@ -15,7 +15,7 @@ public class TextFileHandling {
         }
     }
 
-    public void saveAnimal(Animal animal) {
+    public static void saveAnimal(Animal animal) {
         try {
             FileWriter writer = new FileWriter("ANIMALS.txt", true);
             writer.write(animal.toString() + "\n");
@@ -26,7 +26,7 @@ public class TextFileHandling {
     }
 
     public static void displayAvailableAnimal() {
-        try (Scanner fileScanner = new Scanner("ANIMALS.txt")) {
+        try (Scanner fileScanner = new Scanner(new File("ANIMALS.txt"))) {
             System.out.println("======================================");
             System.out.println("           Available Animals          ");
             System.out.println("======================================");
@@ -50,11 +50,11 @@ public class TextFileHandling {
                 String line = fileScanner.nextLine();
                 String[] parts = line.split(",");
 
-                // Check if this line contains the animal with the given ID
-                // Assuming format: species,name,age,isMale,animalID
-                if (parts.length >= 5 && parts[0].trim().equals(animalId)) {
+                // Format: animalId, name, age, isMale
+                // parts[0] = animalId
+                if (parts.length >= 4 && parts[0].trim().equals(animalId.trim())) {
                     found = true; // Skip this line (don't write it to temp file)
-                    System.out.println("Animal with ID " + animalId + " has been removed.");
+                    System.out.println("\nAnimal with ID " + animalId + " has been Adopted.");
                 } else {
                     writer.write(line + "\n");
                 }
@@ -89,6 +89,23 @@ public class TextFileHandling {
         } catch (IOException e) {
             System.out.println("Error saving reservation: " + e.getMessage());
         }
+    }
+
+    public static String getAnimalById(String animalId) {
+        try (Scanner fileScanner = new Scanner(new File("ANIMALS.txt"))) {
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                String[] parts = line.split(",");
+
+                // Format: animalId, name, age, isMale
+                if (parts.length >= 4 && parts[0].trim().equals(animalId.trim())) {
+                    return line; // Return the full animal record
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading animal: " + e.getMessage());
+        }
+        return null; // Animal not found
     }
 
     public static void displayAdoptioHistory() {
