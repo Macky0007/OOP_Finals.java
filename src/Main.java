@@ -1,12 +1,13 @@
+
 // Members:
 // Dimaculangan, Darlene N.
 // Guce, Mark Jester C.
 
 /*The Animal Adoption Center program is designed to manage animals available for adoption and record
-  adoption transactions in an organized and efficient way. It allows staff to register animals, display
-  available pets, and record adopter information when an adoption occurs. The system also maintains an
-  adoption history for tracking past adoptions.
- */
+ adoption transactions in an organized and efficient way. It allows staff to register animals, display
+ available pets, and record adopter information when an adoption occurs. The system also maintains an
+ adoption history for tracking past adoptions.
+*/
 import java.util.*;
 public class Main {
     public static void main(String[] args){
@@ -46,6 +47,7 @@ public class Main {
 
                 case 3:
                     System.out.println("Displaying Available Animals...");
+                    TextFileHandling.displayAvailableAnimal();
                     break;
 
                 case 4:
@@ -166,7 +168,8 @@ public class Main {
             System.out.println();
             System.out.println("Here are the animals who is ready for adoption: ");
             TextFileHandling.displayAvailableAnimal();
-            
+
+
             System.out.println();
 
             System.out.print("Enter the animal's ID");
