@@ -1,0 +1,79 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class TextFileHandling {
+    public void saveAdopter(Adopter adopter) {
+        try {
+            FileWriter writer = new FileWriter("ADOPTER.txt", true); // true = append mode
+            writer.write(adopter.toString() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving client: " + e.getMessage());
+        }
+    }
+
+    public void saveDog(Dog dog) {
+        try {
+            FileWriter writer = new FileWriter("DOG.txt", true); // true = append mode
+            writer.write(dog.toString() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving client: " + e.getMessage());
+        }
+    }
+
+    public void saveCat(Cat cat) {
+        try {
+            FileWriter writer = new FileWriter("CAT.txt", true); // true = append mode
+            writer.write(cat.toString() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving client: " + e.getMessage());
+        }
+    }
+
+    public void saveHamster(Hamster hamster) {
+        try {
+            FileWriter writer = new FileWriter("HAMSTER.txt", true); // true = append mode
+            writer.write(hamster.toString() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving client: " + e.getMessage());
+        }
+    }
+
+    public void saveRabbit(Rabbit rabbit) {
+        try {
+            FileWriter writer = new FileWriter("RABBIT.txt", true); // true = append mode
+            writer.write(rabbit.toString() + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving client: " + e.getMessage());
+        }
+    }
+
+    public static void saveAdoptionHistory(String record) {
+        try {
+            FileWriter writer = new FileWriter("HISTORY.txt", true);
+            writer.write(record + "\n");
+            writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving reservation: " + e.getMessage());
+        }
+    }
+
+    public static void displayAdoptioHistory() {
+        try (Scanner fileScanner = new Scanner(new File("HISTORY.txt"))) {
+            System.out.println("======================================");
+            System.out.println("           Adoption History           ");
+            System.out.println("======================================");
+            while (fileScanner.hasNextLine()) {
+                System.out.println(fileScanner.nextLine());
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading reservations: " + e.getMessage());
+        }
+    }
+}
