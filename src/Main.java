@@ -36,6 +36,13 @@ public class Main {
                     System.out.println("Displaying Available Animals...");
                     break;
                 case 3:
+                    System.out.println("Are you already registered? (Y/N): ");
+                    String ans = Validation.getYesOrNo();
+
+                    if (ans.equals("N")) {
+                        registerAdopter();
+                    }
+                    
                     adopt();
                     break;
                 case 4:
@@ -77,6 +84,33 @@ public class Main {
         while(repeat);
     }
 
+    public static void registerAdopter() {
+        System.out.println("========== ADOPTER REGISTRATION ==========");
+
+        System.out.print("Full Name: ");
+        String name = Validation.getValidatedName();
+
+        System.out.print("Age: ");
+        int age = Validation.getPositiveInt();
+
+        System.out.print("Contact Number: ");
+        String contact = Validation.getValidatedContact();
+        
+        System.out.print("Email Address: ");
+        String email = Validation.getValidatedEmail();
+
+        System.out.print("Address: ");
+        String address = Validation.getValidatedAddress();
+
+        Adopter adopter = new Adopter(name, age, contact, email, null, address);
+
+        TextFileHandling tf = new TextFileHandling();
+        tf.saveAdopter(adopter);
+
+        System.out.println("Adopter successfully registered.");
+    }
+
+  
     public static void adopt(){
         Scanner sc = new Scanner(System.in);
         int choice;
