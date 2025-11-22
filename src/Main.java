@@ -42,7 +42,6 @@ public class Main {
                 case 3:
                     System.out.println("Displaying Available Animals...");
                     break;
-<<<<<<< HEAD
                 case 3:
                     System.out.println("Are you already registered? (Y/N): ");
                     boolean ans = Validation.getYesOrNo().equals("Y");
@@ -51,7 +50,6 @@ public class Main {
                         registerAdopter();
                     }
                     
-=======
 
                 case 4:
                     System.out.println("Are you already registered? (Y/N)");
@@ -60,7 +58,6 @@ public class Main {
                     if (ans.equals("N")) {
                         registerAdopter();
                     }
->>>>>>> 323fd827401eeba892ae6e4345a69de22fb73da3
                     adopt();
                     break;
 
