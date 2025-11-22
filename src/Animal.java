@@ -5,11 +5,11 @@ class Animal{
     private String animalID;
     private boolean isMale = true;
 
-    public Animal(String name, String species, int age, String animalID, boolean isMale){
+    public Animal(String animalID, String name, String species, int age, String animalID, boolean isMale){
+        this.animalID = animalID;
         this.name = name;
         this.species = species;
         this.age = age;
-        this.animalID = animalID;
         this.isMale = isMale;
     }
     public String toString(){
