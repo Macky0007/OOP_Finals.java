@@ -1,4 +1,4 @@
-public class Adopter {
+public class Adopter{
 
     public String adopterName;
     public int adopterAge;

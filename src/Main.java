@@ -7,7 +7,6 @@
   available pets, and record adopter information when an adoption occurs. The system also maintains an
   adoption history for tracking past adoptions.
  */
-
 import java.util.*;
 public class Main {
     public static void main(String[] args){
@@ -50,6 +49,29 @@ public class Main {
                     break;
             }
             System.out.println("Would you like to do something else?: (Y/N): ");
+            repeat = Validation.getYesOrNo().equals("Y");
+        }
+        while(repeat);
+    }
+
+    public static void registerAnimal(){
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        boolean repeat;
+
+        do{
+            System.out.println("======================================");
+            System.out.println("            Register Animal           ");
+            System.out.println("======================================");
+            System.out.println();
+            System.out.println("Enter Animal Name: ");
+            String name = Validation.getValidatedName();
+            System.out.println("Enter Animal Age: ");
+            int age = Validation.getPositiveInt();
+            System.out.println("Enter Animal Gender: ");
+            System.out.println();
+            System.out.println("------Animal has been registered------");
+            System.out.println("Would you like to Register another Animal? (Y/N): ");
             repeat = Validation.getYesOrNo().equals("Y");
         }
         while(repeat);
