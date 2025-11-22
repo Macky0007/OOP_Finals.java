@@ -36,21 +36,19 @@ public class Main {
                     break;
                     
                 case 2:
-                    System.out.println("Registering Animal...");
-                    break;
-
-                case 3:
-                    System.out.println("Displaying Available Animals...");
-                    break;
-                case 3:
                     System.out.println("Are you already registered? (Y/N): ");
                     boolean ans = Validation.getYesOrNo().equals("Y");
 
                     if (!ans) {
                         registerAdopter();
                     }
-                    
+                    System.out.println("Registering Animal...");
+                    break;
 
+                case 3:
+                    System.out.println("Displaying Available Animals...");
+                    break;
+            
                 case 4:
                     System.out.println("Are you already registered? (Y/N)");
                     String ans = Validation.getYesOrNo();
