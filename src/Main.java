@@ -73,7 +73,7 @@ public class Main {
                     System.out.println("Invalid choice. Please try again.");
                     break;
             }
-            System.out.println("Would you like to do something else?: (Y/N): ");
+            System.out.print("Would you like to do something else?: (Y/N): ");
             repeat = Validation.getYesOrNo().equals("Y");
         }
         while(repeat);
@@ -113,17 +113,15 @@ public class Main {
             Animal animal = null;
 
             switch (sp) {
-                case 1: animal = new Dog(name, age, id, male); break;
-                case 2: animal = new Cat(name, age, id, male); break;
-                case 3: animal = new Hamster(name, age, id, male); break;
-                case 4: animal = new Rabbit(name, age, id, male); break;
+                case 1: animal = new Dog(id, name, age, male); break;
+                case 2: animal = new Cat(id, name, age, male); break;
+                case 3: animal = new Hamster(id, name, age, male); break;
+                case 4: animal = new Rabbit(id, name, age, male); break;
             }
-
-            TextFileHandling tf = new TextFileHandling();
-            tf.saveAnimal(animal);
+            TextFileHandling.saveAnimal(animal);
 
             System.out.println("------Animal has been registered------");
-            System.out.println("Would you like to Register another Animal? (Y/N): ");
+            System.out.print("Would you like to Register another Animal? (Y/N): ");
             repeat = Validation.getYesOrNo().equals("Y");
         }
         while(repeat);
@@ -156,9 +154,8 @@ public class Main {
     }
 
 
-    public static void adopt(){
+    public static void adopt() {
         Scanner sc = new Scanner(System.in);
-        int choice;
         boolean choice2;
 
         do {
@@ -166,21 +163,38 @@ public class Main {
             System.out.println("            Animal Adoption!          ");
             System.out.println("======================================");
             System.out.println();
-            System.out.println("Here are the animals who is ready for adoption: ");
+            System.out.println("Here are the animals who are ready for adoption: ");
             TextFileHandling.displayAvailableAnimal();
-
 
             System.out.println();
 
-            System.out.print("Enter the animal's ID");
-            String adoptId = Validation.sc.nextLine();
-            TextFileHandling.deleteAnimalById(adoptId);
+            System.out.print("Enter the animal's ID: ");
+            String adoptId = sc.nextLine();
 
-            System.out.print("You have successfully adopted a pet.");
+            // Get adopter's name for the history record
+            System.out.print("Enter your name: ");
+            String adopterName = sc.nextLine();
 
-            System.out.println("Would you like to adopt another animal? (Y/N)");
+            // Get the animal info before deleting
+            String animalInfo = TextFileHandling.getAnimalById(adoptId);
+
+            if (animalInfo != null) {
+                // Save to adoption history with date and adopter info
+                String date = java.time.LocalDate.now().toString();
+                String historyRecord = animalInfo + "," + adopterName + "," + date;
+                TextFileHandling.saveAdoptionHistory(historyRecord);
+
+                // Remove from available animals
+                TextFileHandling.deleteAnimalById(adoptId);
+
+                System.out.println("You have successfully adopted a pet!");
+            } else {
+                System.out.println("Animal with ID " + adoptId + " not found.");
+            }
+
+            System.out.print("Would you like to adopt another animal? (Y/N): ");
             choice2 = Validation.getYesOrNo().equals("Y");
         }
-        while(choice2);
+        while (choice2);
     }
 }
