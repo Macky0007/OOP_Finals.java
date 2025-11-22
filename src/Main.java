@@ -174,12 +174,4 @@ public class Main {
         }
         while(choice2);
     }
-<<<<<<< HEAD
 }
-=======
-
-    public static void viewHistory(){
-
-    }
-}
->>>>>>> 323fd827401eeba892ae6e4345a69de22fb73da3
