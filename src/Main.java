@@ -89,6 +89,9 @@ public class Main {
             System.out.println("======================================");
             System.out.println();
 
+            System.out.print("Enter Animal ID: ");
+            String id = Validation.sc.nextLine();
+
             System.out.println("Enter Animal Name: ");
             String name = Validation.getValidatedName();
 
@@ -105,9 +108,6 @@ public class Main {
 
             System.out.println("Is the animal make? (Y/N): ");
             boolean male = Validation.getYesOrNo().equals("Y");
-
-            System.out.print("Enter Animal ID: ");
-            String id = Validation.sc.nextLine();
 
             Animal animal = null;
 
