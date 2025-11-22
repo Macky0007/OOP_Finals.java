@@ -165,43 +165,17 @@ public class Main {
             System.out.println("            Animal Adoption!          ");
             System.out.println("======================================");
             System.out.println();
-            System.out.println("What species of animal would you like to adopt?");
-            System.out.println("1. Dog");
-            System.out.println("2. Cat");
-            System.out.println("3. Hamster");
-            System.out.println("4. Rabbit");
-            System.out.println("5. Exit");
-            System.out.println("Choice: ");
-            choice = Validation.getValidatedInt(1,5);;
-            System.out.println();
-
-            switch (choice) {
-                case 1:
-                    System.out.println("You have chosen to adopt a dog.");
-                    break;
-                case 2:
-                     System.out.println("You have chosen to adopt a cat.");
-                    break;
-                case 3:
-                    System.out.println("You have chosen to adopt a hamster.");
-                    break;
-                case 4:
-                    System.out.println("You have chosen to adopt a rabbit.");
-                    break;
-                case 5:
-                    System.out.println("Exiting adoption process.");
-                    return;
-                default:
-                    System.out.println("Invalid choice. Please try again.");
-            }
-
+            System.out.println("Here are the animals who is ready for adoption: ");
+            TextFileHandling.displayAvailableAnimal();
+            
             System.out.println();
 
             System.out.print("Enter the animal's ID");
             String adoptId = Validation.sc.nextLine();
+            TextFileHandling.deleteAnimalById(adoptId);
 
             System.out.print("You have successfully adopted a pet.");
-          
+
             System.out.println("Would you like to adopt another animal? (Y/N)");
             choice2 = Validation.getYesOrNo().equals("Y");
         }
