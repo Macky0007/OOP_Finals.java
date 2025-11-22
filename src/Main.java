@@ -19,38 +19,48 @@ public class Main {
             System.out.println("======================================");
             System.out.println();
             System.out.println("What would you like to do?");
-            System.out.println("1. Register Animal");
-            System.out.println("2. Display Available Animals");
-            System.out.println("3. Adopt an Animal");
-            System.out.println("4. View Adoption History");
-            System.out.println("5. Exit");
+            System.out.println("1. Register as an adopter");
+            System.out.println("2. Register Animal");
+            System.out.println("3. Display Available Animals");
+            System.out.println("4. Adopt an Animal");
+            System.out.println("5. View Adoption History");
+            System.out.println("6. Exit");
             System.out.println();
             System.out.print("Choice: ");
             int choice = Validation.getValidatedInt(1,5);
 
             switch (choice) {
-                case 1:
+                case 1: 
+                    registerAdopter();
+                    break;
+                    
+                case 2:
                     System.out.println("Registering Animal...");
                     break;
-                case 2:
+
+                case 3:
                     System.out.println("Displaying Available Animals...");
                     break;
-                case 3:
-                    System.out.println("Are you already registered? (Y/N): ");
+
+                case 4:
+                    System.out.println("Are you already registered? (Y/N)");
                     String ans = Validation.getYesOrNo();
 
                     if (ans.equals("N")) {
                         registerAdopter();
                     }
-                    
                     adopt();
                     break;
-                case 4:
-                    System.out.println("Viewing Adoption History...");
-                    break;
+
                 case 5:
+                    System.out.println("Viewing Adoption History...");
+                    TextFileHandling.displayAdoptioHistory();
+                    break;
+
+                case 6:
                     System.out.println("Thank you for using the program. Goodbye!");
                     break;
+                
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
