@@ -175,20 +175,18 @@ public class Main {
             choice = Validation.getValidatedInt(1,5);;
             System.out.println();
 
-            String selectedSpecies = "";
-
             switch (choice) {
                 case 1:
-                    selectedSpecies = "Dog";
+                    System.out.println("You have chosen to adopt a dog.");
                     break;
                 case 2:
-                    selectedSpecies = "Cat";
+                     System.out.println("You have chosen to adopt a cat.");
                     break;
                 case 3:
-                    selectedSpecies = "Hamster";
+                    System.out.println("You have chosen to adopt a hamster.");
                     break;
                 case 4:
-                    selectedSpecies = "Rabbit";
+                    System.out.println("You have chosen to adopt a rabbit.");
                     break;
                 case 5:
                     System.out.println("Exiting adoption process.");
@@ -197,9 +195,13 @@ public class Main {
                     System.out.println("Invalid choice. Please try again.");
             }
 
-            System.out.println("You have chosen to adopt a " + selectedSpeices + ".");
             System.out.println();
 
+            System.out.print("Enter the animal's ID");
+            String adoptId = Validation.sc.nextLine();
+
+            System.out.print("You have successfully adopted a pet.");
+          
             System.out.println("Would you like to adopt another animal? (Y/N)");
             choice2 = Validation.getYesOrNo().equals("Y");
         }
