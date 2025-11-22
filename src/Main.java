@@ -1,4 +1,3 @@
-
 // Members:
 // Dimaculangan, Darlene N.
 // Guce, Mark Jester C.
@@ -46,7 +45,7 @@ public class Main {
                     break;
 
                 case 3:
-                    TextFileHandling.displayAvailableAnimal();
+                    System.out.println("Displaying Available Animals...");
                     break;
 
                 case 4:
@@ -60,6 +59,7 @@ public class Main {
                     break;
 
                 case 5:
+                    System.out.println("Viewing Adoption History...");
                     TextFileHandling.displayAdoptioHistory();
                     break;
 
@@ -155,45 +155,29 @@ public class Main {
 
 
     public static void adopt(){
-    Scanner sc = new Scanner(System.in);
-    boolean choice2;
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        boolean choice2;
 
-    do {
-        System.out.println("======================================");
-        System.out.println("            Animal Adoption!          ");
-        System.out.println("======================================");
-        System.out.println();
-        System.out.println("Here are the animals who are ready for adoption: ");
-        TextFileHandling.displayAvailableAnimal();
-        
-        System.out.println();
+        do {
+            System.out.println("======================================");
+            System.out.println("            Animal Adoption!          ");
+            System.out.println("======================================");
+            System.out.println();
+            System.out.println("Here are the animals who is ready for adoption: ");
+            TextFileHandling.displayAvailableAnimal();
+            
+            System.out.println();
 
-        System.out.print("Enter the animal's ID: ");
-        String adoptId = Validation.sc.nextLine();
-        
-        System.out.print("Enter your full name (registered adopter): ");
-        String adopterName = Validation.getValidatedName();
-        
-        Animal adoptedAnimal = TextFileHandling.getAnimalById(adoptId);
-        
-        if (adoptedAnimal != null) {
+            System.out.print("Enter the animal's ID");
+            String adoptId = Validation.sc.nextLine();
             TextFileHandling.deleteAnimalById(adoptId);
-            
-            String adoptionDate = java.time.LocalDate.now().toString();
-            
-            String record = adoptionDate + "," + adopterName + "," + 
-                          adoptedAnimal.getName() + "," + 
-                          adoptedAnimal.getClass().getSimpleName() + "," + 
-                          adoptId;
-            
-            TextFileHandling.saveAdoptionHistory(record);
-            
-            System.out.println("You have successfully adopted " + adoptedAnimal.getName() + "!");
-        } else {
-            System.out.println("Animal with ID " + adoptId + " not found.");
-        }
 
-        System.out.println("Would you like to adopt another animal? (Y/N): ");
-        choice2 = Validation.getYesOrNo().equals("Y");
-    } while(choice2);
-  }
+            System.out.print("You have successfully adopted a pet.");
+
+            System.out.println("Would you like to adopt another animal? (Y/N)");
+            choice2 = Validation.getYesOrNo().equals("Y");
+        }
+        while(choice2);
+    }
+}
