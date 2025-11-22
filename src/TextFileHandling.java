@@ -38,37 +38,6 @@ public class TextFileHandling {
         }
     }
 
-    public static Animal getAnimalById(String animalId) {
-    try (Scanner fileScanner = new Scanner(new File("ANIMALS.txt"))) {
-        while (fileScanner.hasNextLine()) {
-            String line = fileScanner.nextLine();
-            String[] parts = line.split(",");
-            
-            if (parts.length >= 5 && parts[0].trim().equals(animalId)) {
-                String id = parts[0].trim();
-                String name = parts[1].trim();
-                int age = Integer.parseInt(parts[2].trim());
-                boolean isMale = Boolean.parseBoolean(parts[3].trim());
-                String species = parts[4].trim();
-                
-                switch (species.toLowerCase()) {
-                    case "dog":
-                        return new Dog(name, age, id, isMale);
-                    case "cat":
-                        return new Cat(name, age, id, isMale);
-                    case "hamster":
-                        return new Hamster(name, age, id, isMale);
-                    case "rabbit":
-                        return new Rabbit(name, age, id, isMale);
-                }
-            }
-        }
-    } catch (Exception e) {
-        System.out.println("Error reading animal: " + e.getMessage());
-    }
-    return null;
-}
-
     public static boolean deleteAnimalById(String animalId) {
         File inputFile = new File("ANIMALS.txt");
         File tempFile = new File("ANIMALS_temp.txt");
@@ -122,34 +91,16 @@ public class TextFileHandling {
         }
     }
 
-   public static void displayAdoptionHistory() {
-    try (Scanner fileScanner = new Scanner(new File("HISTORY.txt"))) {
-        System.out.println("======================================");
-        System.out.println("           Adoption History           ");
-        System.out.println("======================================");
-        
-        if (!fileScanner.hasNextLine()) {
-            System.out.println("No adoption records found.");
-        } else {
-            System.out.printf("%-12s %-20s %-15s %-10s %-10s%n", 
-                            "Date", "Adopter", "Animal", "Species", "ID");
-            System.out.println("----------------------------------------------------------------------");
-            
+    public static void displayAdoptioHistory() {
+        try (Scanner fileScanner = new Scanner(new File("HISTORY.txt"))) {
+            System.out.println("======================================");
+            System.out.println("           Adoption History           ");
+            System.out.println("======================================");
             while (fileScanner.hasNextLine()) {
-                String line = fileScanner.nextLine();
-                String[] parts = line.split(",");
-                
-                if (parts.length >= 5) {
-                    System.out.printf("%-12s %-20s %-15s %-10s %-10s%n",
-                                    parts[0].trim(),  // Date
-                                    parts[1].trim(),  // Adopter name
-                                    parts[2].trim(),  // Animal name
-                                    parts[3].trim(),  // Species
-                                    parts[4].trim()); // ID
-                }
+                System.out.println(fileScanner.nextLine());
             }
+        } catch (Exception e) {
+            System.out.println("Error reading reservations: " + e.getMessage());
         }
-    } catch (Exception e) {
-        System.out.println("Error reading adoption history: " + e.getMessage());
     }
 }
