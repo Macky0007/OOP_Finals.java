@@ -155,28 +155,45 @@ public class Main {
 
 
     public static void adopt(){
-        Scanner sc = new Scanner(System.in);
-        boolean choice2;
+    Scanner sc = new Scanner(System.in);
+    boolean choice2;
 
-        do {
-            System.out.println("======================================");
-            System.out.println("            Animal Adoption!          ");
-            System.out.println("======================================");
-            System.out.println();
-            System.out.println("Here are the animals who is ready for adoption: ");
-            TextFileHandling.displayAvailableAnimal();
+    do {
+        System.out.println("======================================");
+        System.out.println("            Animal Adoption!          ");
+        System.out.println("======================================");
+        System.out.println();
+        System.out.println("Here are the animals who are ready for adoption: ");
+        TextFileHandling.displayAvailableAnimal();
+        
+        System.out.println();
 
-            System.out.println();
-
-            System.out.print("Enter the animal's ID");
-            String adoptId = Validation.sc.nextLine();
+        System.out.print("Enter the animal's ID: ");
+        String adoptId = Validation.sc.nextLine();
+        
+        System.out.print("Enter your full name (registered adopter): ");
+        String adopterName = Validation.getValidatedName();
+        
+        Animal adoptedAnimal = TextFileHandling.getAnimalById(adoptId);
+        
+        if (adoptedAnimal != null) {
             TextFileHandling.deleteAnimalById(adoptId);
-
-            System.out.print("You have successfully adopted a pet.");
-
-            System.out.println("Would you like to adopt another animal? (Y/N)");
-            choice2 = Validation.getYesOrNo().equals("Y");
+            
+            String adoptionDate = java.time.LocalDate.now().toString();
+            
+            String record = adoptionDate + "," + adopterName + "," + 
+                          adoptedAnimal.getName() + "," + 
+                          adoptedAnimal.getClass().getSimpleName() + "," + 
+                          adoptId;
+            
+            TextFileHandling.saveAdoptionHistory(record);
+            
+            System.out.println("You have successfully adopted " + adoptedAnimal.getName() + "!");
+        } else {
+            System.out.println("Animal with ID " + adoptId + " not found.");
         }
-        while(choice2);
-    }
-}
+
+        System.out.println("Would you like to adopt another animal? (Y/N): ");
+        choice2 = Validation.getYesOrNo().equals("Y");
+    } while(choice2);
+  }
