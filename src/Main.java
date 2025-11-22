@@ -90,12 +90,30 @@ public class Main {
             System.out.println("            Register Animal           ");
             System.out.println("======================================");
             System.out.println();
+           
             System.out.println("Enter Animal Name: ");
             String name = Validation.getValidatedName();
+            
             System.out.println("Enter Animal Age: ");
             int age = Validation.getPositiveInt();
-            System.out.println("Enter Animal Gender: ");
-            System.out.println();
+            
+            System.out.println("Select Animal Species:");
+            System.out.println("1. Dog");
+            System.out.println("2. Cat");
+            System.out.println("3. Hamster");
+            System.out.println("4. Rabbit");
+            System.out.print("Choice: ");
+            int sp = Validation.getValidatedInt(1,4);
+          
+            System.out.println("Is the animal make? (Y/N): ");
+            boolean male = Validation.getYesOrNo().equals("Y");
+
+            System.out.print("Enter Animal ID: ");
+            String id = Validation.sc.nextLine();
+
+            TextFileHandling tf = new TextFileHandling();
+            tf.saveAnimal(animal);
+           
             System.out.println("------Animal has been registered------");
             System.out.println("Would you like to Register another Animal? (Y/N): ");
             repeat = Validation.getYesOrNo().equals("Y");
