@@ -42,7 +42,7 @@ public class Main {
                     if (!ans) {
                         registerAdopter();
                     }
-                    System.out.println("Registering Animal...");
+                    registerAnimal();
                     break;
 
                 case 3:
@@ -51,7 +51,7 @@ public class Main {
                     break;
 
                 case 4:
-                    System.out.println("Are you already registered? (Y/N)");
+                    System.out.print("Are you already registered? (Y/N)");
                     ans = Validation.getYesOrNo().equals("Y");
 
                     if (!ans) {
@@ -93,10 +93,10 @@ public class Main {
             System.out.print("Enter Animal ID: ");
             String id = Validation.sc.nextLine();
 
-            System.out.println("Enter Animal Name: ");
+            System.out.print("Enter Animal Name: ");
             String name = Validation.getValidatedName();
 
-            System.out.println("Enter Animal Age: ");
+            System.out.print("Enter Animal Age: ");
             int age = Validation.getPositiveInt();
 
             System.out.println("Select Animal Species:");
@@ -107,7 +107,7 @@ public class Main {
             System.out.print("Choice: ");
             int sp = Validation.getValidatedInt(1,4);
 
-            System.out.println("Is the animal make? (Y/N): ");
+            System.out.print("Is the animal make? (Y/N): ");
             boolean male = Validation.getYesOrNo().equals("Y");
 
             Animal animal = null;
