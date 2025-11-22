@@ -107,7 +107,7 @@ public class Main {
             System.out.print("Choice: ");
             int sp = Validation.getValidatedInt(1,4);
 
-            System.out.print("Is the animal make? (Y/N): ");
+            System.out.print("Is the animal male? (Y/N): ");
             boolean male = Validation.getYesOrNo().equals("Y");
 
             Animal animal = null;
