@@ -111,6 +111,15 @@ public class Main {
             System.out.print("Enter Animal ID: ");
             String id = Validation.sc.nextLine();
 
+            Animal animal = null;
+
+            switch (sp) {
+              case 1: animal = new Dog(name, age, id, male); break;
+              case 2: animal = new Cat(name, age, id, male); break;
+              case 3: animal = new Hamster(name, age, id, male); break;
+              case 4: animal = new Rabbit(name, age, id, male); break;
+            }
+          
             TextFileHandling tf = new TextFileHandling();
             tf.saveAnimal(animal);
            
