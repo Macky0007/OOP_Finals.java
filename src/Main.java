@@ -46,7 +46,7 @@ public class Main {
                     break;
 
                 case 3:
-                    System.out.println("Displaying Available Animals...");
+                    TextFileHandling.displayAvailableAnimal();
                     break;
 
                 case 4:
@@ -60,7 +60,6 @@ public class Main {
                     break;
 
                 case 5:
-                    System.out.println("Viewing Adoption History...");
                     TextFileHandling.displayAdoptioHistory();
                     break;
 
@@ -157,7 +156,6 @@ public class Main {
 
     public static void adopt(){
         Scanner sc = new Scanner(System.in);
-        int choice;
         boolean choice2;
 
         do {
@@ -167,7 +165,7 @@ public class Main {
             System.out.println();
             System.out.println("Here are the animals who is ready for adoption: ");
             TextFileHandling.displayAvailableAnimal();
-            
+
             System.out.println();
 
             System.out.print("Enter the animal's ID");
