@@ -14,6 +14,16 @@ public class TextFileHandling {
         }
     }
 
+   public void saveAnimal(Animal animal) {
+    try {
+        FileWriter writer = new FileWriter("ANIMALS.txt", true);
+        writer.write(animal.toString() + "\n");
+        writer.close();
+        } catch (IOException e) {
+            System.out.println("Error saving animal: " + e.getMessage());
+        }
+    }
+        
     public void saveDog(Dog dog) {
         try {
             FileWriter writer = new FileWriter("DOG.txt", true); // true = append mode
