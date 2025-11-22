@@ -38,6 +38,49 @@ public class TextFileHandling {
         }
     }
 
+    public static boolean deleteAnimalById(String animalId) {
+        File inputFile = new File("ANIMALS.txt");
+        File tempFile = new File("ANIMALS_temp.txt");
+        boolean found = false;
+
+        try (Scanner fileScanner = new Scanner(inputFile);
+             FileWriter writer = new FileWriter(tempFile)) {
+
+            while (fileScanner.hasNextLine()) {
+                String line = fileScanner.nextLine();
+                String[] parts = line.split(",");
+
+                // Check if this line contains the animal with the given ID
+                // Assuming format: species,name,age,isMale,animalID
+                if (parts.length >= 5 && parts[0].trim().equals(animalId)) {
+                    found = true; // Skip this line (don't write it to temp file)
+                    System.out.println("Animal with ID " + animalId + " has been removed.");
+                } else {
+                    writer.write(line + "\n");
+                }
+            }
+
+        } catch (IOException e) {
+            System.out.println("Error deleting animal: " + e.getMessage());
+            return false;
+        }
+
+        // Delete original file and rename temp file
+        if (found) {
+            if (inputFile.delete()) {
+                tempFile.renameTo(inputFile);
+            } else {
+                System.out.println("Error: Could not update the file.");
+                return false;
+            }
+        } else {
+            tempFile.delete(); // Clean up temp file if animal wasn't found
+            System.out.println("Animal with ID " + animalId + " not found.");
+        }
+
+        return found;
+    }
+
     public static void saveAdoptionHistory(String record) {
         try {
             FileWriter writer = new FileWriter("HISTORY.txt", true);
