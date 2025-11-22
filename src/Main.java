@@ -31,10 +31,10 @@ public class Main {
             int choice = Validation.getValidatedInt(1,5);
 
             switch (choice) {
-                case 1: 
+                case 1:
                     registerAdopter();
                     break;
-                    
+
                 case 2:
                     System.out.println("Are you already registered? (Y/N): ");
                     boolean ans = Validation.getYesOrNo().equals("Y");
@@ -48,12 +48,12 @@ public class Main {
                 case 3:
                     System.out.println("Displaying Available Animals...");
                     break;
-            
+
                 case 4:
                     System.out.println("Are you already registered? (Y/N)");
-                    String ans = Validation.getYesOrNo();
+                    ans = Validation.getYesOrNo().equals("Y");
 
-                    if (ans.equals("N")) {
+                    if (!ans) {
                         registerAdopter();
                     }
                     adopt();
@@ -67,7 +67,7 @@ public class Main {
                 case 6:
                     System.out.println("Thank you for using the program. Goodbye!");
                     break;
-                
+
                 default:
                     System.out.println("Invalid choice. Please try again.");
                     break;
@@ -88,13 +88,13 @@ public class Main {
             System.out.println("            Register Animal           ");
             System.out.println("======================================");
             System.out.println();
-           
+
             System.out.println("Enter Animal Name: ");
             String name = Validation.getValidatedName();
-            
+
             System.out.println("Enter Animal Age: ");
             int age = Validation.getPositiveInt();
-            
+
             System.out.println("Select Animal Species:");
             System.out.println("1. Dog");
             System.out.println("2. Cat");
@@ -102,7 +102,7 @@ public class Main {
             System.out.println("4. Rabbit");
             System.out.print("Choice: ");
             int sp = Validation.getValidatedInt(1,4);
-          
+
             System.out.println("Is the animal make? (Y/N): ");
             boolean male = Validation.getYesOrNo().equals("Y");
 
@@ -112,15 +112,15 @@ public class Main {
             Animal animal = null;
 
             switch (sp) {
-              case 1: animal = new Dog(name, age, id, male); break;
-              case 2: animal = new Cat(name, age, id, male); break;
-              case 3: animal = new Hamster(name, age, id, male); break;
-              case 4: animal = new Rabbit(name, age, id, male); break;
+                case 1: animal = new Dog(name, age, id, male); break;
+                case 2: animal = new Cat(name, age, id, male); break;
+                case 3: animal = new Hamster(name, age, id, male); break;
+                case 4: animal = new Rabbit(name, age, id, male); break;
             }
-          
+
             TextFileHandling tf = new TextFileHandling();
             tf.saveAnimal(animal);
-           
+
             System.out.println("------Animal has been registered------");
             System.out.println("Would you like to Register another Animal? (Y/N): ");
             repeat = Validation.getYesOrNo().equals("Y");
@@ -139,7 +139,7 @@ public class Main {
 
         System.out.print("Contact Number: ");
         String contact = Validation.getValidatedContact();
-        
+
         System.out.print("Email Address: ");
         String email = Validation.getValidatedEmail();
 
@@ -154,7 +154,7 @@ public class Main {
         System.out.println("Adopter successfully registered.");
     }
 
-  
+
     public static void adopt(){
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -176,10 +176,10 @@ public class Main {
             System.out.println();
 
             String selectedSpecies = "";
-          
+
             switch (choice) {
                 case 1:
-                    selectedSpecies = "Dog"; 
+                    selectedSpecies = "Dog";
                     break;
                 case 2:
                     selectedSpecies = "Cat";
@@ -199,7 +199,7 @@ public class Main {
 
             System.out.println("You have chosen to adopt a " + selectedSpeices + ".");
             System.out.println();
-          
+
             System.out.println("Would you like to adopt another animal? (Y/N)");
             choice2 = Validation.getYesOrNo().equals("Y");
         }
