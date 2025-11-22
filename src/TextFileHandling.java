@@ -1,3 +1,4 @@
+
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -14,53 +15,13 @@ public class TextFileHandling {
         }
     }
 
-   public void saveAnimal(Animal animal) {
+    public void saveAnimal(Animal animal) {
         try {
             FileWriter writer = new FileWriter("ANIMALS.txt", true);
             writer.write(animal.toString() + "\n");
             writer.close();
         } catch (IOException e) {
             System.out.println("Error saving animal: " + e.getMessage());
-        }
-    }
-        
-    public void saveDog(Dog dog) {
-        try {
-            FileWriter writer = new FileWriter("DOG.txt", true); // true = append mode
-            writer.write(dog.toString() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Error saving client: " + e.getMessage());
-        }
-    }
-
-    public void saveCat(Cat cat) {
-        try {
-            FileWriter writer = new FileWriter("CAT.txt", true); // true = append mode
-            writer.write(cat.toString() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Error saving client: " + e.getMessage());
-        }
-    }
-
-    public void saveHamster(Hamster hamster) {
-        try {
-            FileWriter writer = new FileWriter("HAMSTER.txt", true); // true = append mode
-            writer.write(hamster.toString() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Error saving client: " + e.getMessage());
-        }
-    }
-
-    public void saveRabbit(Rabbit rabbit) {
-        try {
-            FileWriter writer = new FileWriter("RABBIT.txt", true); // true = append mode
-            writer.write(rabbit.toString() + "\n");
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Error saving client: " + e.getMessage());
         }
     }
 
