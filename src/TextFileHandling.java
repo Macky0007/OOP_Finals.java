@@ -25,6 +25,19 @@ public class TextFileHandling {
         }
     }
 
+    public static void displayAvailableAnimal() {
+        try (Scanner fileScanner = new Scanner("ANIMALS.txt")) {
+            System.out.println("======================================");
+            System.out.println("           Available Animals          ");
+            System.out.println("======================================");
+            while (fileScanner.hasNextLine()) {
+                System.out.println(fileScanner.nextLine());
+            }
+        } catch (Exception e) {
+            System.out.println("Error reading Available animal: " + e.getMessage());
+        }
+    }
+
     public static void saveAdoptionHistory(String record) {
         try {
             FileWriter writer = new FileWriter("HISTORY.txt", true);
