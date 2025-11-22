@@ -88,4 +88,15 @@ public class Validation {
             }
         }
     }
+
+    public static String getValidatedEmail() {
+        while (true) {
+            String email = sc.nextLine();
+            if (email.matches("^[\\w-\\.]+@[\\w-\\.]+\\.[a-zA-Z]{2,}$")) {
+                return email;
+            }
+            System.out.println("Invalid email");
+            System.out.print("Email: ");
+        }
+    }
 }
