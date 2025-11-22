@@ -122,16 +122,34 @@ public class TextFileHandling {
         }
     }
 
-    public static void displayAdoptioHistory() {
-        try (Scanner fileScanner = new Scanner(new File("HISTORY.txt"))) {
-            System.out.println("======================================");
-            System.out.println("           Adoption History           ");
-            System.out.println("======================================");
+   public static void displayAdoptionHistory() {
+    try (Scanner fileScanner = new Scanner(new File("HISTORY.txt"))) {
+        System.out.println("======================================");
+        System.out.println("           Adoption History           ");
+        System.out.println("======================================");
+        
+        if (!fileScanner.hasNextLine()) {
+            System.out.println("No adoption records found.");
+        } else {
+            System.out.printf("%-12s %-20s %-15s %-10s %-10s%n", 
+                            "Date", "Adopter", "Animal", "Species", "ID");
+            System.out.println("----------------------------------------------------------------------");
+            
             while (fileScanner.hasNextLine()) {
-                System.out.println(fileScanner.nextLine());
+                String line = fileScanner.nextLine();
+                String[] parts = line.split(",");
+                
+                if (parts.length >= 5) {
+                    System.out.printf("%-12s %-20s %-15s %-10s %-10s%n",
+                                    parts[0].trim(),  // Date
+                                    parts[1].trim(),  // Adopter name
+                                    parts[2].trim(),  // Animal name
+                                    parts[3].trim(),  // Species
+                                    parts[4].trim()); // ID
+                }
             }
-        } catch (Exception e) {
-            System.out.println("Error reading reservations: " + e.getMessage());
         }
+    } catch (Exception e) {
+        System.out.println("Error reading adoption history: " + e.getMessage());
     }
 }
