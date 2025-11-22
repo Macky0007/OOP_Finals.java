@@ -38,6 +38,37 @@ public class TextFileHandling {
         }
     }
 
+    public static Animal getAnimalById(String animalId) {
+    try (Scanner fileScanner = new Scanner(new File("ANIMALS.txt"))) {
+        while (fileScanner.hasNextLine()) {
+            String line = fileScanner.nextLine();
+            String[] parts = line.split(",");
+            
+            if (parts.length >= 5 && parts[0].trim().equals(animalId)) {
+                String id = parts[0].trim();
+                String name = parts[1].trim();
+                int age = Integer.parseInt(parts[2].trim());
+                boolean isMale = Boolean.parseBoolean(parts[3].trim());
+                String species = parts[4].trim();
+                
+                switch (species.toLowerCase()) {
+                    case "dog":
+                        return new Dog(name, age, id, isMale);
+                    case "cat":
+                        return new Cat(name, age, id, isMale);
+                    case "hamster":
+                        return new Hamster(name, age, id, isMale);
+                    case "rabbit":
+                        return new Rabbit(name, age, id, isMale);
+                }
+            }
+        }
+    } catch (Exception e) {
+        System.out.println("Error reading animal: " + e.getMessage());
+    }
+    return null;
+}
+
     public static boolean deleteAnimalById(String animalId) {
         File inputFile = new File("ANIMALS.txt");
         File tempFile = new File("ANIMALS_temp.txt");
