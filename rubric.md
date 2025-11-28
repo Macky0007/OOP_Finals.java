@@ -27,8 +27,20 @@ The inheritance structure exists but subclasses add no specialized functionality
 ### 4. Base Grade (10%)
 **Score:** 5/5
 
+### 5. Extra Points (up to 6)
+
+**Features:** 3/5
+- File saving
+- Console experience
+
+**Code Quality:** 1.0/1.0
+- Variable naming: 0.5/0.5
+- Code organization: 0.5/0.5
+
+**Extra Points Total:** +4.0
+
 ---
 
-## Final Grade: 80/100
+## Final Grade: 80 + 4.0 = **84/100**
 
 *Assessment generated based on project analysis.*
