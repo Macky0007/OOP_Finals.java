@@ -7,8 +7,8 @@
 ## Grading Breakdown
 
 ### 1. Class Diagram Completeness (25%)
-**Score:** 4/5
-**Notes:** Class diagram provided via Figma link (accessible online). Shows main classes and relationships. Deduction for not including a static image/PDF in the repository - Figma links require external access and may become inaccessible. However, diagram does exist and appears to cover the system structure.
+**Score:** 5/5
+**Notes:** Complete UML diagram provided via Figma, now available as uml.png. The diagram shows comprehensive class structure with proper UML notation including all 8 classes (Animal parent with Dog, Cat, Hamster, Rabbit children; Adopter; Manager with specialized manager classes). All classes display attributes with proper types and access modifiers, methods with return types, and clear inheritance relationships marked with proper UML arrows. Excellent visualization of the complete system architecture.
 
 ### 2. Java Program - OOP Concepts (50%)
 **Score:** 3/5
@@ -29,6 +29,6 @@ The inheritance structure exists but subclasses add no specialized functionality
 
 ---
 
-## Final Grade: 75/100
+## Final Grade: 80/100
 
 *Assessment generated based on project analysis.*
